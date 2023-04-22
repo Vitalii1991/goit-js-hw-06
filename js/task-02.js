@@ -16,5 +16,3 @@ for (const ingredient of ingredients) {
 
   ingredientsList.append(ingredientsItem);
 }
-
-console.log(ingredientsList);
