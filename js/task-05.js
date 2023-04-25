@@ -4,9 +4,7 @@ const titleContent = document.querySelector("#name-output");
 inputEl.addEventListener("input", onInputChange);
 
 function onInputChange(event) {
-  if (event.currentTarget.value.trim() === "") {
-    titleContent.textContent = "Anonymous";
-  } else {
-    titleContent.textContent = event.currentTarget.value;
-  }
+  event.currentTarget.value.trim() === ""
+    ? (titleContent.textContent = "Anonymous")
+    : (titleContent.textContent = event.currentTarget.value);
 }
