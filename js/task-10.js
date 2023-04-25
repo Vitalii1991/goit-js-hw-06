@@ -4,31 +4,41 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const inputRef = document.querySelector('input[type="number"]');
-const buttonCreate = document.querySelector("button[data-create]");
-const buttonDestroy = document.querySelector("button[data-destroy]");
-const divBoxe = document.querySelector("#boxes");
+const refs = {
+  inputEl: document.querySelector('input[type="number"]'),
+  buttonCreateEl: document.querySelector("button[data-create]"),
+  buttonDestroyEl: document.querySelector("button[data-destroy]"),
+  divBoxeEl: document.querySelector("#boxes"),
+};
 
-buttonCreate.addEventListener("click", () => {
-  const amount = parseInt(inputRef.value);
-  createBoxes(amount);
+refs.buttonCreateEl.addEventListener("click", () => {
+  const amount = parseInt(refs.inputEl.value);
+  if (
+    amount >= Number(refs.inputEl.min) &&
+    amount <= Number(refs.inputEl.max)
+  ) {
+    createBoxes(amount);
+  } else {
+    alert("Помилка! Введіть значення від 1 до 100.");
+    refs.inputEl.value = "";
+  }
 });
 
-buttonDestroy.addEventListener("click", () => {
-  divBoxe.innerHTML = "";
+refs.buttonDestroyEl.addEventListener("click", () => {
+  refs.divBoxeEl.innerHTML = "";
 });
 
 function createBoxes(amount) {
   let sizeDiv = 30;
 
-  for (let i = 0; i < amount; i++) {
+  for (let i = 0; i < amount; i += Number(refs.inputEl.step)) {
     const newDivCollection = document.createElement("div");
 
     newDivCollection.style.width = sizeDiv + "px";
     newDivCollection.style.height = sizeDiv + "px";
     newDivCollection.style.backgroundColor = getRandomHexColor();
 
-    divBoxe.appendChild(newDivCollection);
+    refs.divBoxeEl.appendChild(newDivCollection);
     sizeDiv += 10;
   }
 }
