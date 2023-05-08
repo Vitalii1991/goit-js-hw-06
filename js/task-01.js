@@ -1,10 +1,10 @@
 const refs = {
   categoriesList: document.querySelector("#categories"),
-  categoriesItem: document.querySelectorAll(".item"),
+  categoriesItems: document.querySelectorAll(".item"),
 };
-console.log("Number of categories:", refs.categoriesItem.length);
+console.log("Number of categories:", refs.categoriesItems.length);
 
-refs.categoriesItem.forEach((item) => {
+refs.categoriesItems.forEach((item) => {
   console.log("Category:", item.firstElementChild.textContent);
   console.log("Elements: ", item.lastElementChild.children.length);
 });
